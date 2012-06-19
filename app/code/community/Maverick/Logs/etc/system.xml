@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Maverick Logs Extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * It is available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to m.nahhas@live.fr so we can send you a copy immediately.
+ *
+ * You free to edit or add to this file your own code
+ * github : https://github.com/maverick193/Maverick-Logs-Manager.git
+ *
+ * @version     0.1.0
+ * @category    Maverick
+ * @package     Maverick_Logs
+ * @copyright   Copyright (c) 2012 Maverick-dev Inc. (http://maverick-dev.fr)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ 
+/**
+ * System XML
+ *
+ * @category   Maverick
+ * @package    Maverick_Logs
+ * @author     Mohammed NAHHAS <m.nahhas@live.fr>
+ */
+-->
+<config>
+	<tabs>
+		<maverick translate="label" module="maverick_logs">
+			<label>Maverick</label>
+			<sort_order>506</sort_order>
+		</maverick>
+	</tabs>
+	<sections>
+		<maverick_logs translate="label" module="maverick_logs">
+			<label>Manage Logs</label>
+			<sort_order>1</sort_order>
+			<tab>maverick</tab>
+			<show_in_default>1</show_in_default>
+			<show_in_website>0</show_in_website>
+			<show_in_store>0</show_in_store>
+			<groups>
+				<notification translate="label" module="maverick_logs">
+					<label>Notification Settings</label>
+					<sort_order>10</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>0</show_in_website>
+					<show_in_store>0</show_in_store>
+					<fields>
+						<enable translate="label comment" module="maverick_logs">
+							<label>Enable Window Notification</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+							<comment><![CDATA[Enable Window Notification after login page if there are new logs]]></comment>
+						</enable>
+					</fields>
+				</notification>
+				<logs translate="label" module="maverick_logs">
+					<label>Logs Management</label>
+					<sort_order>20</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>0</show_in_website>
+					<show_in_store>0</show_in_store>
+					<fields>
+						<lines_per_page translate="label comment" module="maverick_logs">
+							<label>Number of lines per page</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</lines_per_page>
+						<delay translate="label comment" module="maverick_logs">
+							<label>Auto refresh delay (seconds)</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+							<comment><![CDATA[if auto refresh checkbox is checked, the content of file will be reloaded every [delay] seconds]]></comment>
+							<tooltip>delay value must be given in seconds</tooltip>
+						</delay>
+					</fields>
+				</logs>
+			</groups>
+		</maverick_logs>
+	</sections>
+</config>

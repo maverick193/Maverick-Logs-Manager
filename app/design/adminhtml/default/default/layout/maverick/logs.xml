@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+/**
+ * Maverick Logs Extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * It is available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to m.nahhas@live.fr so we can send you a copy immediately.
+ *
+ * You free to edit or add to this file your own code
+ * github : https://github.com/maverick193/Maverick-Logs-Manager.git
+ *
+ * @version     0.1.0
+ * @category    Maverick
+ * @package     Maverick_Logs
+ * @copyright   Copyright (c) 2012 Maverick-dev Inc. (http://maverick-dev.fr)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<layout>
+    <default>
+        <reference name="head">
+            <action method="addCss"><name>maverick/logs/css/style.css</name></action>
+        </reference>
+        <reference name="notifications">
+            <block type="maverick_logs/adminhtml_notification" name="maverick_logs_notification" as="logs_notification" acl="maverick/logs" template="maverick/logs/notification/window.phtml" />
+        </reference>
+    </default>
+    
+    <adminhtml_mavelogs_index>
+    	<reference name="head">
+			<action method="addCss"><name>maverick/logs/css/tree.css</name></action>		
+			<action method="addJs"><script>maverick/logs/jquery-1.7.2.min.js</script></action>
+			<action method="addJs"><script>maverick/logs/jquery.easing.js</script></action>
+			<action method="addJs"><script>maverick/logs/jquery.easing.compatibility.js</script></action>	
+			<action method="addJs"><script>maverick/logs/jqueryFileTree.js</script></action>
+		</reference>
+        <reference name="content">
+    		<block type="maverick_logs/adminhtml_manage_logs" name="maverick.manage.logs" />
+    	</reference>
+    </adminhtml_mavelogs_index>
+    
+    <adminhtml_mavelogs_read>
+		<remove name="root"/>
+		<block type="maverick_logs/adminhtml_manage_logs_content" name="maverick.log.file.content" output="toHtml"/>
+	</adminhtml_mavelogs_read>
+	
+	<adminhtml_mavelogs_tree>
+		<remove name="root"/>
+		<block type="maverick_logs/adminhtml_manage_logs_tree" name="maverick.log.tree.file" output="toHtml" />
+	</adminhtml_mavelogs_tree>
+</layout>

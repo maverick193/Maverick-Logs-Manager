@@ -1,0 +1,7 @@
+<?php $content = $this->readLogFile(); ?>
+
+<?php if(empty($content)): ?>
+    <?php echo Mage::helper('maverick_logs')->__('No records found.'); ?>
+<?php else : ?>
+	<pre><?php echo $content; ?></pre>
+<?php endif; ?>

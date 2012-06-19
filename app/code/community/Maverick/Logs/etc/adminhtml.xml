@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Maverick Logs Extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * It is available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to m.nahhas@live.fr so we can send you a copy immediately.
+ *
+ * You free to edit or add to this file your own code
+ * github : https://github.com/maverick193/Maverick-Logs-Manager.git
+ *
+ * @version     0.1.0
+ * @category    Maverick
+ * @package     Maverick_Logs
+ * @copyright   Copyright (c) 2012 Maverick-dev Inc. (http://maverick-dev.fr)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ 
+/**
+ * Adminhtml XML
+ *
+ * @category   Maverick
+ * @package    Maverick_Logs
+ * @author     Mohammed NAHHAS <m.nahhas@live.fr>
+ */
+-->
+<config>
+	<menu>
+		<maverick translate="title" module="maverick_logs">
+			<title><![CDATA[Maverick]]></title>
+			<sort_order>40</sort_order>
+			<children>
+				<maverick_logs translate="title" module="maverick_logs">
+					<title>Maverick Logs</title>
+					<sort_order>1</sort_order>
+					<children>
+						<manage_logs translate="title" module="maverick_logs">
+							<title><![CDATA[Manage Logs]]></title>
+							<sort_order>10</sort_order>
+							<action>adminhtml/mavelogs</action>
+						</manage_logs>
+						<configuration translate="title" module="maverick_logs">
+							<title><![CDATA[General Configuartion]]></title>
+							<sort_order>20</sort_order>
+							<action>adminhtml/conflogs/config</action>
+						</configuration>
+					</children>
+				</maverick_logs>
+			</children>
+		</maverick>
+	</menu>
+	<acl>
+		<resources>
+			<admin>
+				<children>
+					<maverick translate="title" module="maverick_logs">
+						<title>Maverick Modules</title>
+						<sort_order>40</sort_order>
+						<children>
+							<maverick_logs translate="title" module="maverick_logs">
+								<title>Maverick Logs Permissions</title>
+								<sort_order>1</sort_order>
+								<children>
+									<manage_logs translate="title" module="maverick_logs">
+										<title><![CDATA[Manage Logs]]></title>
+										<sort_order>10</sort_order>
+									</manage_logs>
+									<configuration translate="title" module="maverick_logs">
+										<title><![CDATA[General Configuartion]]></title>
+										<sort_order>20</sort_order>
+									</configuration>
+								</children>
+							</maverick_logs>
+						</children>
+					</maverick>
+					<system>
+						<children>
+							<config>
+								<children>
+									<maverick_logs translate="title" module="maverick_logs">
+										<title>Maverick Logs Section</title>
+										<sort_order>500</sort_order>
+									</maverick_logs>
+								</children>
+							</config>
+						</children>
+					</system>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+</config>

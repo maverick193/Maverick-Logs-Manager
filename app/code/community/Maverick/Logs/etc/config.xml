@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Maverick Logs Extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * It is available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to m.nahhas@live.fr so we can send you a copy immediately.
+ *
+ * You free to edit or add to this file your own code
+ * github : https://github.com/maverick193/Maverick-Logs-Manager.git
+ *
+ * @version     0.1.0
+ * @category    Maverick
+ * @package     Maverick_Logs
+ * @copyright   Copyright (c) 2012 Maverick-dev Inc. (http://maverick-dev.fr)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ 
+/**
+ * Configuration XML
+ *
+ * @category   Maverick
+ * @package    Maverick_Logs
+ * @author     Mohammed NAHHAS <m.nahhas@live.fr>
+ */
+-->
+<config>
+	<global>
+		<blocks>
+			<maverick_logs>
+				<class>Maverick_Logs_Block</class>
+			</maverick_logs>
+		</blocks>
+		<helpers>
+			<maverick_logs>
+				<class>Maverick_Logs_Helper</class>
+			</maverick_logs>
+		</helpers>
+		<models>
+			<maverick_logs>
+				<class>Maverick_Logs_Model</class>
+			</maverick_logs>
+		</models>
+	</global>
+	<admin>
+		<routers>
+			<adminhtml>
+				<args>
+					<modules>
+						<maverick_logs before="Mage_Adminhtml">Maverick_Logs_Adminhtml</maverick_logs>
+					</modules>
+				</args>
+			</adminhtml>
+		</routers>
+	</admin>
+	<adminhtml>
+		<layout>
+			<updates>
+				<maverick_logs>
+					<file>maverick/logs.xml</file>
+				</maverick_logs>
+			</updates>
+		</layout>
+		<translate>
+			<modules>
+				<Maverick_Logs>
+					<files>
+						<default>Maverick_Logs.csv</default>
+					</files>
+				</Maverick_Logs>
+			</modules>
+		</translate>
+	</adminhtml>
+	<default>
+		<maverick_logs>
+			<notification>
+				<lastcheck>a:0:{}</lastcheck>
+				<enable>1</enable>
+			</notification>
+			<logs>
+				<lines_per_page>50</lines_per_page>
+				<delay>20</delay>
+			</logs>
+		</maverick_logs>
+	</default>
+</config>

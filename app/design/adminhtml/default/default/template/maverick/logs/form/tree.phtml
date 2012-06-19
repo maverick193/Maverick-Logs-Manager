@@ -1,0 +1,22 @@
+<?php $postDir 	= urldecode($this->getRequest()->getPost('dir')); ?>
+<?php $root		= Mage::getBaseDir(Mage::helper('maverick_logs')->base_dir_type); ?>
+
+<?php $tree = $this->getTree($root . $postDir); ?>
+<?php if(!empty($tree)) : ?>
+    <ul class="file-tree" style="display:none;">
+        <?php foreach ($tree as $file) : ?>
+            <?php if( file_exists($root . $postDir . $file) && $file != '.' && $file != '..' && is_dir($root . $postDir . $file) ) :?>
+                <li class="directory collapsed"><a href="#" rel="<?php echo htmlentities($postDir . $file) . DS ?>"><?php echo htmlentities($file) ?></a></li>
+            <?php endif; ?>
+        <?php endforeach; ?>
+        
+        <?php foreach ($tree as $file) : ?>
+            <?php if( file_exists($root . $postDir . $file) && $file != '.' && $file != '..' && !is_dir($root . $postDir . $file) ) :?>
+                <?php $ext = preg_replace('/^.*\./', '', $file); ?>
+                <li class="file ext_<?php echo $ext; ?>"><a href="#" rel="<?php echo htmlentities($postDir . $file) ?>"><?php echo htmlentities($file)  ?></a></li>
+             <?php endif; ?>
+        <?php endforeach; ?>
+    </ul>
+<?php else: ?>
+    <?php echo Mage::helper('maverick_logs')->__('No logs were not found.')?>
+<?php endif; ?>

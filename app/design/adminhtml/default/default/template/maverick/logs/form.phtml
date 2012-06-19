@@ -1,0 +1,55 @@
+<div class="maverick-logs-form">
+    <?php echo $this->getStoreSwitcherHtml() ?>
+    <table cellspacing="0" width="100%">
+        <tr>
+            <td class="left-col">
+                <p>
+                    <span class="auto-refresh">
+                        <input type="checkbox" name="refresh" id="refresh"  onchange="autorefresh();" />
+                        <label for="refresh"><?php echo Mage::helper('maverick_logs')->__('Auto Refresh') ?></label>
+                    </span>
+                <p>
+                <div id="file-output"></div> 
+            </td>
+            <td class="right-col">
+                <div id="spinner" class="spinner" style="display:none;">
+	                <div class="circle"></div>
+                    <div class="circle1"></div>
+                </div>
+                <div class="buttons-set" id="container">
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<?php $form_key = Mage::getSingleton('adminhtml/url')->getSecretKey("adminhtml_mavelogs","read");?>
+<?php $delay = 10000; ?>
+<script type="text/javascript">
+	jQuery 		= jQuery.noConflict();
+	var gfile 	= null;
+	jQuery(document).ready( function() {
+		jQuery('#container').fileTree({ root: '/', script: '<?php echo Mage::helper("adminhtml")->getUrl('*/*/tree', array('is_ajax' => 'true')); ?>', folderEvent: 'click', expandSpeed: 750, collapseSpeed: 750, expandEasing: 'easeOutBounce', collapseEasing: 'easeOutBounce'}, function(file) {
+			gfile = file;
+		    jQuery('#file-output').load('<?php echo Mage::helper("adminhtml")->getUrl('*/*/read')?>', {path : file, form_key :FORM_KEY} ,function(){
+				});
+
+	    });
+		jQuery("#spinner").bind("ajaxSend", function() {
+		    jQuery(this).show();
+	    }).bind("ajaxStop", function() {
+	        jQuery(this).hide();
+	    }).bind("ajaxError", function() {
+	        jQuery(this).hide();
+	    });
+	});
+
+	function autorefresh() {
+		if($('refresh').checked) {
+			jQuery('#file-output').load('<?php echo Mage::helper("adminhtml")->getUrl('*/*/read')?>', {path : gfile, form_key :FORM_KEY} ,function(){
+					});
+			setTimeout(autorefresh, <?php echo $delay; ?>);
+		}
+		
+	}
+</script>
