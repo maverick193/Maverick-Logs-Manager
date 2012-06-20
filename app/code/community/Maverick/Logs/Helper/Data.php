@@ -33,11 +33,11 @@ class Maverick_Logs_Helper_Data extends Mage_Core_Helper_Data
 {
     /**
      * Base dir Type
-     * Change its value to 'var' to get the content of "var/" folder
+     * Change its value to 'log' to get the content of "log/" folder
      * Mage::getBaseDir($this->base_dir_type);
      * @var string
      */
-    public $base_dir_type = 'log';
+    public $base_dir_type = 'var';
 
     /**
      * Retrive log file list
@@ -89,5 +89,14 @@ class Maverick_Logs_Helper_Data extends Mage_Core_Helper_Data
         $coreConfigDataObj->saveConfig('maverick_logs/notification/lastcheck', $serializeData, 'default', 0);
         Mage::getConfig()->reinit();
         Mage::app()->reinitStores();
+    }
+    
+    /**
+     * Return the folder path to display
+     * @return string
+     */
+    public function getVarDir()
+    {
+        return Mage::getBaseDir(Mage::helper('maverick_logs')->base_dir_type);
     }
 }

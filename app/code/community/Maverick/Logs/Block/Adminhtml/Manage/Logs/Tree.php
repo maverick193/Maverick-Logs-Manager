@@ -51,7 +51,16 @@ class Maverick_Logs_Block_Adminhtml_Manage_Logs_Tree extends Mage_Adminhtml_Bloc
             natcasesort($files);
             //To avoid the count of . and ..
             if(count($files) > 2) {
-                $tree = $files;
+                if($path === (Mage::helper('maverick_logs')->getVarDir() . DS)) {
+                    $allowedDirs = explode(',', Mage::getStoreConfig('maverick_logs/logs/display_files'));
+                    foreach ($files as $file) {
+                        if(in_array($file, $allowedDirs)) {
+                            $tree[] = $file;
+                        }
+                    }
+                }else{
+                    $tree = $files;
+                }
             }
         }
         return $tree;

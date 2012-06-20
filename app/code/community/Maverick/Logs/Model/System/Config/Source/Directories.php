@@ -1,4 +1,4 @@
-<?php
+<?php 
 /**
  * Maverick Logs Extension
  *
@@ -20,17 +20,32 @@
  * @copyright   Copyright (c) 2012 Maverick-dev Inc. (http://maverick-dev.fr)
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-
+ 
 /**
- * Display File Content
- * @see Maverick_Logs_Block_Adminhtml_Manage_Logs_Content
+ * Multiselect Directories Field Source Model
+ *
+ * @category   Maverick
+ * @package    Maverick_Logs
+ * @author     Mohammed NAHHAS <m.nahhas@live.fr>
  */
-?>
 
-<?php $content = $this->readLogFile(); ?>
+class Maverick_Logs_Model_System_Config_Source_Directories
+{
+    protected $_options;
 
-<?php if(empty($content)): ?>
-    <?php echo Mage::helper('maverick_logs')->__('No records found.'); ?>
-<?php else: ?>
-	<pre><?php echo $content; ?></pre>
-<?php endif; ?>
+    public function toOptionArray()
+    {
+        if (!$this->_options) {
+            $varDir = Mage::helper('maverick_logs')->getVarDir();
+            $subFolder = array_filter(glob($varDir . DS .'*'), 'is_dir');
+            foreach ($subFolder as $folder) {
+                $tmp = explode(DS, $folder);
+                $this->_options[] = array('label' => end($tmp), 'value' => end($tmp));
+            }
+        }
+
+        $options = $this->_options;
+
+        return $options;
+    }
+}

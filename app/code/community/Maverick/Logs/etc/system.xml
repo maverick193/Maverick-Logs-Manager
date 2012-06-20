@@ -90,6 +90,17 @@
 							<comment><![CDATA[if auto refresh checkbox is checked, the content of file will be reloaded every [delay] seconds]]></comment>
 							<tooltip>delay value must be given in seconds</tooltip>
 						</delay>
+						<display_files translate="label comment" module="maverick_logs">
+							<label>List content of Directories</label>
+							<frontend_type>multiselect</frontend_type>
+							<source_model>maverick_logs/system_config_source_directories</source_model>
+							<validate>required-entry</validate>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+							<comment><![CDATA[Select Directories which content files will be loaded]]></comment>		
+						</display_files>
 					</fields>
 				</logs>
 			</groups>
